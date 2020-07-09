@@ -101,6 +101,7 @@ elif host_system == 'linux'
     endif
 
     nasm_flags += ['-DPREFIX','-f', 'aoutb']
+    host_x86_bits = 32
 
 elif host_system == 'darwin'
   if debug_build
