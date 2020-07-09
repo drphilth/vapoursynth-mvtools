@@ -88,12 +88,20 @@ if host_system == 'windows' or host_system == 'cygwin'
   endif
 
   nasm_flags += ['-f', 'win@0@'.format(host_x86_bits)]
-elif host_system == 'linux' or host_system == 'bsd' # The BSDs are close enough, right?
+elif host_system == 'linux'
   if debug_build
     nasm_flags += '-gdwarf'
   endif
 
   nasm_flags += ['-f', 'elf@0@'.format(host_x86_bits)]
+
+  elif host_system == 'freebsd' or host_system == 'bsd' # BSD systems require aoutb format from nasm
+    if debug_build
+      nasm_flags += '-gdwarf'
+    endif
+
+    nasm_flags += ['-f', 'aoutb']
+
 elif host_system == 'darwin'
   if debug_build
     nasm_flags += '-gdwarf'
