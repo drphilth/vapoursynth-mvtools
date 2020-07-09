@@ -128,7 +128,7 @@ if host_cpu_family.startswith('x86')
   ]
 
 
-  if host_cpu_family == 'x86'
+  if host_cpu_family == 'x86' or host_system == 'freebsd' # nasm can't produce 64 bit aoutb code
     nasm_flags += '-DARCH_X86_64=0'
 
     nasm_sources += [
