@@ -73,6 +73,13 @@
     %define FORMAT_ELF 1
 %endif
 
+%define FORMAT_AOUT 0
+%ifidn __OUTPUT_FORMAT__,aout
+    %define FORMAT_AOUT 1
+%elifidn __OUTPUT_FORMAT__,aoutb
+    %define FORMAT_AOUT 1
+%endif
+
 %ifdef PREFIX
     %define mangle(x) _ %+ x
 %else
@@ -84,7 +91,7 @@
         SECTION .rdata align=%1
     %elif WIN64
         SECTION .rdata align=%1
-    %elifidn __OUTPUT_FORMAT__,aout
+    %elif FORMAT_AOUT
         SECTION .data align=%1
     %else
         SECTION .rodata align=%1
