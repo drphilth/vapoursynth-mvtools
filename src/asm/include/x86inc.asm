@@ -92,7 +92,7 @@
     %elif WIN64
         SECTION .rdata align=%1
     %elif FORMAT_AOUT
-        SECTION .data align=32
+        SECTION .rodata
     %else
         SECTION .rodata align=%1
     %endif
