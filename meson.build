@@ -100,7 +100,7 @@ elif host_system == 'linux'
       nasm_flags += '-gdwarf'
     endif
 
-    nasm_flags += ['-f', 'aoutb']
+    nasm_flags += ['-DPREFIX','-f', 'aoutb']
 
 elif host_system == 'darwin'
   if debug_build
