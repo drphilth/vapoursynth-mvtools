@@ -84,6 +84,8 @@
         SECTION .rdata align=%1
     %elif WIN64
         SECTION .rdata align=%1
+    %elifidn __OUTPUT_FORMAT__,aout
+        SECTION .data align=%1
     %else
         SECTION .rodata align=%1
     %endif
